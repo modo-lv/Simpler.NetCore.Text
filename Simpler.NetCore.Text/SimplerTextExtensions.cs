@@ -1,5 +1,7 @@
 ﻿using System;
 
+// ReSharper disable UnusedMember.Global
+
 namespace Simpler.NetCore.Text {
   /// <summary>
   /// Various extensions to simplify working with <see cref="String"/>s.
@@ -65,6 +67,7 @@ namespace Simpler.NetCore.Text {
         : text.Substring(startIndex, length);
     }
 
+
     /// <summary>
     /// Return a <see cref="String"/> if it isn't blank (according to <see cref="string.IsNullOrWhiteSpace"/>),
     /// or a different, nullable <see cref="String"/> if it is.
@@ -78,5 +81,12 @@ namespace Simpler.NetCore.Text {
     /// <inheritdoc cref="String.IsNullOrWhiteSpace"/>.
     public static Boolean IsBlank(this String? value) =>
       String.IsNullOrWhiteSpace(value);
+
+    /// <summary>
+    /// Checks that a string is not <c>null</c> or composed entirely of white-space.
+    /// Shorthand for <c>!String.IsNullOrWhiteSpace(value)</c>.
+    /// </summary>
+    public static Boolean NotBlank(this String? value) => 
+      !value.IsBlank();
   }
 }

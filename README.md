@@ -1,27 +1,33 @@
-﻿# Simpler.NetCore.Text
+# Simpler.NetCore.Text
 
 ## Extension methods
 
-### `IfBlank`
+### `IsBlank`
 
 A fluent alternative to `String.IsNullOrWhiteSpace`.
-
-**Usage:**
 
 ```cs
 "Text".IsBlank();          // false
 "  ".IsBlank();            // true
 ((String) null).IsBlank(); // true
-``` 
+```
 
- 
+### `NotBlank`
+
+The reverse of `IsBlank`; a fluent, more readable shorthand for `!String.IsNullOrWhiteSpace(value);`.
+
+```cs
+"Text".NotBlank();           // true
+"    ".NotBlank();           // false
+"".NotBlank;                 // false
+(null as String).NotBlank(); // false
+```
+
 
 ### `NonBlank`
 
 Use on a string variable to return it only if it's not blank (isn't `null` and contains more than just white-space).
 Basically a fluent shortcut/alternative to `String.IsNullOrWhiteSpace(str) ? str : null`.
-
-**Usage:**
 
 ```cs
 String t = "Text";
@@ -32,16 +38,15 @@ t.NonBlank();            // "Text"
 b.NonBlank() ?? "Blank"; // "Blank"
 b.NonBlank();            // null
 n.NonBlank("Was null");  // "Was null" 
-``` 
+```
 
- 
- ### `Part`
- 
- Return a part of a `String`. 
- A more versatile version of `String.Substring` that supports negative arguments (offsets from the end of the string) and
- doesn't throw an exception if the resulting string is shorter than offset.
- 
- ```cs
+
+### `Part`
+
+Return a part of a `String`. 
+A more versatile version of `String.Substring` that supports negative arguments (offsets from the end of the string) and doesn't throw an exception if the resulting string is shorter than offset.
+
+```cs
 "OffsetSub".Part(0, -3);     // "Offset"
 "123SubRegular".Part(3, 3);  // "Sub"
 "NotEverything".Part(3);     // "Everything"
