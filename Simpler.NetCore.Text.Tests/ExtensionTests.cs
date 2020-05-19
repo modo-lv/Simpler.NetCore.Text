@@ -17,6 +17,11 @@ namespace Simpler.NetCore.Text.Tests {
     }
 
     [Fact]
+    void Repeat() {
+      "6".Repeat(3).Should().Be("666");
+    }
+
+    [Fact]
     void TrimSuffix() {
       "markdown.md".TrimSuffix(".md").Should().Be("markdown");
     }

@@ -2,7 +2,7 @@
 
 ## Extension methods
 
-### `IsBlank`
+### `.IsBlank()`
 
 A fluent alternative to `String.IsNullOrWhiteSpace`.
 
@@ -12,7 +12,7 @@ A fluent alternative to `String.IsNullOrWhiteSpace`.
 ((String) null).IsBlank(); // true
 ```
 
-### `NotBlank`
+### `.NotBlank()`
 
 The reverse of `IsBlank`; a fluent, more readable shorthand for `!String.IsNullOrWhiteSpace(value);`.
 
@@ -24,7 +24,7 @@ The reverse of `IsBlank`; a fluent, more readable shorthand for `!String.IsNullO
 ```
 
 
-### `NonBlank`
+### `.NonBlank()`
 
 Use on a string variable to return it only if it's not blank (isn't `null` and contains more than just white-space).
 Basically a fluent shortcut/alternative to `String.IsNullOrWhiteSpace(str) ? str : null`.
@@ -41,10 +41,10 @@ n.NonBlank("Was null");  // "Was null"
 ```
 
 
-### `Part`
+### `.Part(from, to)`
 
 Return a part of a `String`. 
-A more versatile version of `String.Substring` that supports negative arguments (offsets from the end of the string) and doesn't throw an exception if the resulting string is shorter than offset.
+A more versatile version of `String.Substring` that supports negative arguments (offsets from the end of the string) and doesn't throw an exception if the resulting string is shorter than the requested length.
 
 ```cs
 "OffsetSub".Part(0, -3);     // "Offset"
@@ -56,8 +56,16 @@ A more versatile version of `String.Substring` that supports negative arguments 
 "TrickOrTreat".Part(-7, -5); // "Or" 
 ```
 
+### `.Repeat(times)`
 
-### `Text`
+Repeat text a given number of times.
+
+```cs
+"9".Repeat(4); // "9999"
+```
+
+
+### `.Text()`
 
 Return a non-null version of a given `String`.
 Syntactic shorthand for `text ?? ""`.
@@ -70,7 +78,7 @@ value.Text();            // ""
 ```
 
 
-### `TrimSuffix`
+### `.TrimSuffix(suffix)`
 
 Remove a substring from the end of a `String`.
 

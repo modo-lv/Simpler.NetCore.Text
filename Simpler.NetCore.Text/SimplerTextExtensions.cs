@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 // ReSharper disable UnusedMember.Global
 
@@ -7,6 +8,23 @@ namespace Simpler.NetCore.Text {
   /// Various extensions to simplify working with <see cref="String"/>s.
   /// </summary>
   public static class SimplerTextExtensions {
+    /// <summary>
+    /// Repeat a given <see cref="String"/> a number of times.
+    /// </summary>
+    /// <param name="text">Text to repeat.</param>
+    /// <param name="times">Number of times to repeat.</param>
+    /// <returns>Resulting repeated text.</returns>
+    public static String Repeat(this String text, Int32 times)
+    {
+      if (times < 1)
+        return String.Empty;
+      var sb = new StringBuilder();
+      for (var a = 0; a < times; a++)
+        sb.Append(text);
+      return sb.ToString();
+    }
+
+    
     /// <summary>
     /// Return a non-null version of a given <see cref="String"/>.
     /// A syntactic shorthand for doing <c>text ?? ""</c>. 
