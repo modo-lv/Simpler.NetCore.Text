@@ -14,8 +14,7 @@ namespace Simpler.NetCore.Text {
     /// <param name="text">Text to repeat.</param>
     /// <param name="times">Number of times to repeat.</param>
     /// <returns>Resulting repeated text.</returns>
-    public static String Repeat(this String text, Int32 times)
-    {
+    public static String Repeat(this String text, Int32 times) {
       if (times < 1)
         return String.Empty;
       var sb = new StringBuilder();
@@ -24,7 +23,7 @@ namespace Simpler.NetCore.Text {
       return sb.ToString();
     }
 
-    
+
     /// <summary>
     /// Return a non-null version of a given <see cref="String"/>.
     /// A syntactic shorthand for doing <c>text ?? ""</c>. 
@@ -33,28 +32,6 @@ namespace Simpler.NetCore.Text {
     /// <returns>String if it is non-null, <see cref="string.Empty"/> otherwise.</returns>
     public static String Text(this String? text) =>
       text ?? String.Empty;
-
-
-    /// <summary>
-    /// Remove a substring from the end of a <see cref="String"/>.
-    /// </summary>
-    /// <param name="text">Text containing the suffix.</param>
-    /// <param name="suffix">Suffix to remove.</param>
-    /// <param name="comparisonType">
-    /// One of the enumeration values that determines how <paramref name="text"/> and <paramref name="suffix"/>
-    /// are compared.
-    /// </param>
-    /// <returns><paramref name="text"/> without the <paramref name="suffix"/>.</returns>
-    public static String TrimSuffix(
-      this String text,
-      String suffix,
-      StringComparison comparisonType = StringComparison.Ordinal
-    ) {
-      text ??= "";
-      return text.EndsWith(suffix, comparisonType)
-        ? text.Part(0, -suffix.Length)
-        : text;
-    }
 
 
     /// <summary>
@@ -104,7 +81,51 @@ namespace Simpler.NetCore.Text {
     /// Checks that a string is not <c>null</c> or composed entirely of white-space.
     /// Shorthand for <c>!String.IsNullOrWhiteSpace(value)</c>.
     /// </summary>
-    public static Boolean NotBlank(this String? value) => 
+    public static Boolean NotBlank(this String? value) =>
       !value.IsBlank();
+    
+    
+    /// <summary>
+    /// Remove a substring from the end of a <see cref="String"/>.
+    /// </summary>
+    /// <param name="text">Text containing the suffix.</param>
+    /// <param name="suffix">Suffix to remove.</param>
+    /// <param name="comparisonType">
+    /// One of the enumeration values that determines how <paramref name="text"/> and <paramref name="suffix"/>
+    /// are compared.
+    /// </param>
+    /// <returns><paramref name="text"/> without the <paramref name="suffix"/>.</returns>
+    public static String TrimSuffix(
+      this String text,
+      String suffix,
+      StringComparison comparisonType = StringComparison.Ordinal
+    ) {
+      text ??= "";
+      return text.EndsWith(suffix, comparisonType)
+        ? text.Part(0, -suffix.Length)
+        : text;
+    }
+    
+    /// <summary>
+    /// Remove a substring from the beginning of a <see cref="String"/>.
+    /// </summary>
+    /// <param name="text">Text containing the prefix.</param>
+    /// <param name="prefix">Prefix to remove.</param>
+    /// <param name="comparisonType">
+    /// One of the enumeration values that determines how <paramref name="text"/> and <paramref name="prefix"/>
+    /// are compared.
+    /// </param>
+    /// <returns><paramref name="text"/> without the <paramref name="prefix"/>.</returns>
+    public static String TrimPrefix(
+      this String text,
+      String prefix,
+      StringComparison comparisonType = StringComparison.Ordinal
+    ) {
+      text ??= "";
+      return text.StartsWith(prefix, comparisonType)
+        ? text.Part(prefix.Length)
+        : text;
+    }
+
   }
 }

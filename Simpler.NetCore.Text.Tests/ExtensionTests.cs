@@ -25,5 +25,10 @@ namespace Simpler.NetCore.Text.Tests {
     void TrimSuffix() {
       "markdown.md".TrimSuffix(".md").Should().Be("markdown");
     }
+    
+    [Fact]
+    void TrimPrefix() {
+      "user@email".TrimPrefix("user").Should().Be("@email");
+    }
   }
 }

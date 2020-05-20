@@ -85,3 +85,11 @@ Remove a substring from the end of a `String`.
 ```cs
 "markdown.md".TrimSuffix(".md"); // "markdown"
 ```
+
+### `.TrimPrefix(prefix)`
+
+Remove a substring from the start of a `String`.
+
+```cs
+"user@email".TrimPrefix("user"); // "@email"
+```
